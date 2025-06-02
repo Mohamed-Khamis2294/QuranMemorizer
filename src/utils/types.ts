@@ -35,14 +35,11 @@ export interface Surah {
   name:                   string;
   englishName:            string;
   englishNameTranslation: string;
-  revelationType:         RevelationType;
+ 
   numberOfAyahs:          number;
 }
 
-export enum RevelationType {
-  Meccan = "Meccan",
-  Medinan = "Medinan",
-}
+
 
 export interface Edition {
   identifier:  string;
