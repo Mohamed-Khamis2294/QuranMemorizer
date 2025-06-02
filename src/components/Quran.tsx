@@ -3,7 +3,7 @@ import { getJuz } from "../utils/http";
 import type { Ayah } from "../utils/types";
 import Buttons from "./Buttons";
 import PageDropdown from "./PageDropdown";
-import ThemeToggle from "./ThemeToggle";
+import NavBar from "./NavBar";
 
 const Quran = () => {
   const [juz, setJuz] = useState(1);
@@ -44,6 +44,7 @@ const Quran = () => {
 
   return (
     <>
+      <NavBar/> 
       <Buttons
         numbers={Array.from({ length: 30 }, (_, i) => i + 1)}
         onselect={setJuz}
@@ -78,7 +79,6 @@ const Quran = () => {
             Next
           </button>
         </div>
-        <ThemeToggle />
       </div>
     </>
   );
