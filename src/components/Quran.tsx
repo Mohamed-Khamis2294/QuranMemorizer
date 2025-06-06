@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getJuz } from "../utils/http";
 import type { Ayah } from "../utils/types";
 import Buttons from "./Buttons";
@@ -11,6 +11,8 @@ const Quran = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [ayahsPage, setAyahsPage] = useState<Ayah[]>([]);
   const [optionsNumbersArray, setOptionsNumbersArray] = useState<number[]>([]);
+  const numbersOfJuz = useMemo(() => Array.from({ length: 30 }, (_, i) => i + 1), []);
+
 
   const handleSelectedPage = (x: number) => {
     setCurrentIndex(0);
@@ -46,7 +48,7 @@ const Quran = () => {
     <>
       <NavBar/> 
       <Buttons
-        numbers={Array.from({ length: 30 }, (_, i) => i + 1)}
+        numbers={numbersOfJuz}
         onselect={setJuz}
         activeJuz={juz}
       />

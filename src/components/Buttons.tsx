@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 const Buttons = ({
   numbers,
   onselect,
@@ -9,7 +11,9 @@ const Buttons = ({
 }) => {
   return (
     <div>
-      <h2 className="text-xl text-center mb-2 font-semibold dark:text-white">Select Juz</h2>
+      <h2 className="text-xl text-center mb-2 font-semibold dark:text-white">
+        Select Juz
+      </h2>
       <div className="flex flex-wrap justify-center items-center gap-2">
         {numbers.map((_, i) => {
           const juzNumber = i + 1;
@@ -34,4 +38,5 @@ const Buttons = ({
   );
 };
 
-export default Buttons;
+
+export default memo(Buttons);
