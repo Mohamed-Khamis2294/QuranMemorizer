@@ -23,10 +23,10 @@ const Buttons = ({
             <button
               key={juzNumber}
               onClick={() => onselect(juzNumber)}
-              className={`w-10 h-10 rounded text-center leading-10 transition-colors duration-200 font-medium ${
+              className={`w-10 h-10 rounded text-center leading-10 transition-colors  duration-200 font-medium ${
                 isActive
-                  ? "bg-blue-500 text-white dark:bg-blue-600"
-                  : "bg-amber-400 text-black dark:bg-yellow-600 dark:text-black"
+                  ? "bg-blue-500 text-white cursor-auto dark:bg-blue-600"
+                  : "bg-amber-400 text-black cursor-pointer dark:bg-yellow-600 dark:text-black"
               }`}
             >
               {juzNumber}

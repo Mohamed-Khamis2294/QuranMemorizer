@@ -68,7 +68,7 @@ const Quran = () => {
           <button
             onClick={handlePrev}
             disabled={currentIndex <= 0}
-            className="px-4 py-2 bg-gray-300 dark:bg-gray-700 dark:text-white rounded disabled:opacity-50"
+            className="px-4 py-2 bg-gray-300 cursor-pointer dark:bg-gray-700 dark:text-white rounded disabled:opacity-50 disabled:cursor-auto"
           >
             Previous
           </button>
@@ -76,7 +76,7 @@ const Quran = () => {
           <button
             onClick={handleNext}
             disabled={currentIndex >= ayahsPage.length - 1}
-            className="px-4 py-2 bg-blue-500 dark:bg-blue-700 text-white rounded disabled:opacity-50"
+            className="px-4 py-2 bg-blue-500 cursor-pointer dark:bg-blue-700 text-white rounded disabled:opacity-50 disabled:cursor-auto"
           >
             Next
           </button>
