@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const PageDropdown = ({
   onselect,
@@ -7,7 +7,10 @@ const PageDropdown = ({
   onselect: (x: number) => void;
   optionsNumbersArray: number[];
 }) => {
-  const [selected, setSelected] = useState<number>(1);
+  const [selected, setSelected] = useState<number>(optionsNumbersArray[0]);
+  useEffect(()=>{
+    setSelected(optionsNumbersArray[0])
+  },[optionsNumbersArray])
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = Number(e.target.value);
