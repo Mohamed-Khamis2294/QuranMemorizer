@@ -53,7 +53,6 @@ const Quran = () => {
         activeJuz={juz}
       />
       <PageDropdown
-        key={optionsNumbersArray[0]}
         onselect={handleSelectedPage}
         optionsNumbersArray={optionsNumbersArray}
       />
