@@ -4,6 +4,7 @@ import type { Ayah } from "../utils/types";
 import Buttons from "./Buttons";
 import PageDropdown from "./PageDropdown";
 import NavBar from "./NavBar";
+import AyahComponent from "./Ayah";
 
 const Quran = () => {
   const [juz, setJuz] = useState(1);
@@ -44,6 +45,10 @@ const Quran = () => {
     }
   };
 
+  
+  
+  
+
   return (
     <>
       <NavBar/> 
@@ -59,9 +64,7 @@ const Quran = () => {
 
       <div className="flex flex-col items-center justify-center">
         {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (
-          <p key={index} className="font-medium text-center mb-1 text-lg dark:text-amber-300">
-            ۞{ayah.text}۞
-          </p>
+         <AyahComponent key={index} ayah={ayah} lastOne={index===currentIndex}/>
         ))}
 
         <div className="flex gap-4 mt-4 mb-4">
