@@ -5,6 +5,7 @@ import Buttons from "./Buttons";
 import PageDropdown from "./PageDropdown";
 import NavBar from "./NavBar";
 import AyahComponent from "./Ayah";
+import Instructions from "./Instructions";
 
 const Quran = () => {
   const [juz, setJuz] = useState(1);
@@ -44,14 +45,10 @@ const Quran = () => {
       setCurrentIndex(currentIndex - 1);
     }
   };
-
-  
-  
-  
-
   return (
     <>
       <NavBar/> 
+      <Instructions/>
       <Buttons
         numbers={numbersOfJuz}
         onselect={setJuz}
