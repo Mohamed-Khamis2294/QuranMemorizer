@@ -23,7 +23,7 @@ const Instructions = () => {
 
       {/* Collapsible content */}
       {open && (
-        <div className="bg-amber-400 dark:bg-yellow-600 text-black p-6 rounded-b-2xl shadow-lg border border-t-0 border-yellow-500 space-y-4 transition-all duration-300 ease-in-out">
+        <div className="bg-amber-400 dark:bg-yellow-500 text-black p-6 rounded-b-2xl shadow-lg border border-t-0 border-yellow-500 space-y-4 transition-all duration-300 ease-in-out">
           <div className="flex items-start gap-2">
             <BookOpenText className="mt-1" />
             <p>
