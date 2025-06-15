@@ -34,9 +34,17 @@ const Quran = () => {
     handleGetjuz();
   }, [juz]);
 
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight ,
+      behavior: 'smooth' 
+    });
+  };
+  
   const handleNext = () => {
     if (ayahsPage && currentIndex < ayahsPage.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex(currentIndex + 1)
+      scrollToBottom();
     }
   };
 
@@ -60,7 +68,7 @@ const Quran = () => {
       />
 
       <div className="flex flex-col  items-center  justify-center">
-        <div dir="rtl" className=" flex flex-wrap p-2 items-center justify-center pb-16  gap-0">
+        <div dir="rtl" className=" flex flex-col p-2 items-center justify-center pb-36  gap-0">
         {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (
           <AyahComponent key={index} ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>1}/>
           ))}
