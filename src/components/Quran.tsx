@@ -59,14 +59,14 @@ const Quran = () => {
         optionsNumbersArray={optionsNumbersArray}
       />
 
-      <div className="flex flex-col items-center relative justify-center">
-        <div className="h-[120px] lg:h-[140px] p-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-sky-700 scrollbar-track-sky-200 dark:scrollbar-thumb-blue-400 dark:scrollbar-track-gray-800 ">
+      <div className="flex flex-col items-center  justify-center">
+        <div className="h-[600px] lg:h-[400px] p-2  ">
         {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (
           <AyahComponent key={index} ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>1}/>
           ))}
           </div>
 
-        <div className="flex gap-4 mt-4 mb-4 absolute -bottom-24 ">
+        <div className="flex gap-4 mt-4 mb-4 fixed bottom-0 ">
           <button
             onClick={handlePrev}
             disabled={currentIndex <= 0}
