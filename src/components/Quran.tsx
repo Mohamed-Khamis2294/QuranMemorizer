@@ -60,7 +60,7 @@ const Quran = () => {
       />
 
       <div className="flex flex-col  items-center  justify-center">
-        <div dir="rtl" className=" flex flex-wrap p-2 items-start pb-16  gap-0">
+        <div dir="rtl" className=" flex flex-wrap p-2 items-center pb-16  gap-0">
         {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (
           <AyahComponent key={index} ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>1}/>
           ))}
