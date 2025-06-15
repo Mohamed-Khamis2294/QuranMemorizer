@@ -11,7 +11,7 @@ const Instructions = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div dir="rtl" className="mx-4 mt-4">
+    <div dir="rtl" className="mx-4 mt-4 pt-16">
       {/* Toggle Button */}
       <button
         onClick={() => setOpen((prev) => !prev)}
