@@ -27,8 +27,8 @@ const Instructions = () => {
           <div className="flex items-start gap-2">
             <BookOpenText className="mt-1" />
             <p>
-              هذا الموقع يساعدك على تسميع القرآن لنفسك، ولكن من الأفضل الذهاب إلى{" "}
-              <span className="font-bold underline">محفظ أو شيخ</span> ليساعدك في ذلك.
+              هذا الموقع يساعدك على تسميع القرآن لنفسك، و من الأفضل الذهاب إلى{" "}
+              <span className="font-bold underline">محفظ أو شيخ</span> ليساعدك في ذلك. 
             </p>
           </div>
 
@@ -42,7 +42,7 @@ const Instructions = () => {
           <div className="flex items-start gap-2">
             <ArrowRightLeft className="mt-1" />
             <p>
-              <span className="font-semibold">ثانياً:</span> ستظهر أول آية من الصفحة، ثم عند الضغط على{" "}
+              <span className="font-semibold">ثانياً:</span> ستظهر أول كلمةمن اول  آية من الصفحة، ثم عند الضغط على{" "}
               <span className="bg-green-500 text-white px-2 py-0.5 rounded">التالي</span>، تظهر أول كلمة فقط من الآية التالية.
             </p>
           </div>
@@ -51,7 +51,13 @@ const Instructions = () => {
             <Eye className="mt-1" />
             <p>
               تلك الكلمة تظهر
-              <span className="text-green-700 font-semibold">باللون الأخضر</span>، ويمكنك الضغط عليها لعرض أول كلمة أو الآية كاملة.
+              <span className="text-green-700 font-semibold">باللون الأخضر</span>، ويمكنك الضغط عليها لعرض الآية كاملة.
+            </p>
+          </div>
+          <div className="flex items-start gap-2">
+            <Eye className="mt-1" />
+            <p>
+              او الضغط علي الازرار التي تظهر تحت اخر اية تم عرضها لعرض كلمة كلمة
             </p>
           </div>
         </div>
