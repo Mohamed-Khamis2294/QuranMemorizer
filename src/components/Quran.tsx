@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { getJuz } from "../utils/http";
 import type { Ayah } from "../utils/types";
 import Buttons from "./Buttons";
@@ -33,13 +33,17 @@ const Quran = () => {
 
     handleGetjuz();
   }, [juz]);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.body.scrollHeight ,
-      behavior: 'smooth' 
-    });
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+  // const scrollToBottom = () => {
+  //   window.scrollTo({
+  //     top: document.body.scrollHeight ,
+  //     behavior: 'smooth' 
+  //   });
+  // };
   
   const handleNext = () => {
     if (ayahsPage && currentIndex < ayahsPage.length - 1) {
@@ -67,11 +71,12 @@ const Quran = () => {
         optionsNumbersArray={optionsNumbersArray}
       />
 
-      <div className="flex flex-col  items-center  justify-center">
-        <div dir="rtl" className=" flex flex-col p-2 items-center justify-center pb-36  gap-0">
+      <div   key={juz} className="flex flex-col  items-center  justify-center">
+        <div  dir="rtl" className=" flex flex-col p-2 items-center justify-center pb-36  gap-0">
         {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (
-          <AyahComponent key={index} ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>1}/>
+          <AyahComponent  key={ayah.text} ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1}/>
           ))}
+           <div ref={bottomRef} />
           </div>
 
         <div className="flex gap-4 mt-4 mb-4 fixed bottom-0 ">
@@ -80,7 +85,7 @@ const Quran = () => {
             disabled={currentIndex <= 0}
             className="px-4 py-2  bg-gray-300 cursor-pointer dark:bg-gray-700 dark:text-white rounded disabled:opacity-50 disabled:cursor-auto"
           >
-            Previous
+            الاية السابقة
           </button>
 
           <button
@@ -88,7 +93,7 @@ const Quran = () => {
             disabled={currentIndex >= ayahsPage.length - 1}
             className="px-4 py-2 bg-blue-500 cursor-pointer dark:bg-blue-700 text-white rounded disabled:opacity-50 disabled:cursor-auto"
           >
-            Next
+            الاية التالية
           </button>
         </div>
       </div>
