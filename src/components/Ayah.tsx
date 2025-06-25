@@ -2,7 +2,7 @@ import {  useState } from "react"
 import type { Ayah } from "../utils/types"
 
 const AyahComponent = ({ayah,lastOne}:{ayah:Ayah,lastOne:boolean}) => {
-  const [showAllAyah, setShowAllAyah] = useState(false);
+  const [, setShowAllAyah] = useState(false);
   const[NumberOfWords,setNumberOfWords]=useState(1)
   const stopGetNextWord=ayah.text.split(' ').length>NumberOfWords
   const stopGetPrevWord=NumberOfWords<1
