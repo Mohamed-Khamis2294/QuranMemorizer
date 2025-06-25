@@ -51,7 +51,7 @@ const Instructions = () => {
             <Eye className="mt-1" />
             <p>
               تلك الكلمة تظهر
-              <span className="text-green-700 font-semibold">باللون الأخضر</span>، ويمكنك الضغط عليها لعرض الآية كاملة.
+              <span className="text-green-700 font-semibold">باللون الأخضر</span>، ويمكنك الضغط عليها لعرض الآية كاملة او الضغط عليها مرة اخري لعرض اول كلمة فقط.
             </p>
           </div>
           <div className="flex items-start gap-2">

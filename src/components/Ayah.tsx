@@ -2,6 +2,7 @@ import {  useState } from "react"
 import type { Ayah } from "../utils/types"
 
 const AyahComponent = ({ayah,lastOne}:{ayah:Ayah,lastOne:boolean}) => {
+  const [showAllAyah, setShowAllAyah] = useState(false);
   const[NumberOfWords,setNumberOfWords]=useState(1)
   const stopGetNextWord=ayah.text.split(' ').length>NumberOfWords
   const stopGetPrevWord=NumberOfWords<1
@@ -19,10 +20,13 @@ const AyahComponent = ({ayah,lastOne}:{ayah:Ayah,lastOne:boolean}) => {
         setNumberOfWords(prev=>prev-1)
     }
   }
-  const handleDisplayAllAyah=()=>{
-    setNumberOfWords(ayah.text.split(' ').length)  
-  }
- 
+  const handleDisplayAllAyah = () => {
+    setShowAllAyah(prev => {
+      const newState = !prev;
+      setNumberOfWords(newState ? ayah.text.split(" ").length : 1);
+      return newState;
+    });
+  };
   return (
     <>
     <p  onClick={handleDisplayAllAyah} className={`font-medium text-center mb-1 text-lg dark:text-amber-300 ${lastOne&&'text-green-700 dark:text-green-300'}`}>
