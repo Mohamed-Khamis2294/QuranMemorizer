@@ -1,3 +1,4 @@
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
@@ -20,7 +21,7 @@ const ThemeToggle = () => {
       onClick={() => setIsDark(!isDark)}
       className="px-4 py-2 rounded bg-gray-200 dark:bg-gray-800 dark:text-white"
     >
-      {isDark ? "Light Mode" : "Dark Mode"}
+      {isDark ? <Sun/> : <Moon/>}
     </button>
   );
 };

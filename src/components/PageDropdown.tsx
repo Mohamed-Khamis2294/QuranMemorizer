@@ -21,7 +21,7 @@ const PageDropdown = ({
   return (
     <div className="p-4">
       <label htmlFor="page-select" className="mr-2 font-medium dark:text-white">
-        Select Page:
+        اختر الصفحة:
       </label>
       <select
         id="page-select"
