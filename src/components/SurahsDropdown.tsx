@@ -9,6 +9,7 @@ const SurahsDropdown = ({
 }) => {
   return (
     <>
+    <p className='text-center text-red-600'>اضافة البحث بالاية قيد التطوير</p>
     <div className="my-4">
       <label
         htmlFor="surah-choice"
