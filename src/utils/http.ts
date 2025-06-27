@@ -15,7 +15,7 @@ export async function getJuz(juzNumber: number): Promise<Data> {
 }
 export async function getQuran () {
   try {
-    const res = await fetch(`http://api.alquran.cloud/v1/quran/ar.asad `);
+    const res = await fetch(`https://api.alquran.cloud/v1/quran/ar.asad `);
     if (!res.ok) {
       throw new Error(`Failed to fetch Quran page`);
     }
