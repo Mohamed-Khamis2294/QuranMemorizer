@@ -13,3 +13,16 @@ export async function getJuz(juzNumber: number): Promise<Data> {
     throw error;
   }
 }
+export async function getQuran () {
+  try {
+    const res = await fetch(`http://api.alquran.cloud/v1/quran/ar.asad `);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch Quran page`);
+    }
+    const data = await res.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}

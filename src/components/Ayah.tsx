@@ -1,7 +1,7 @@
 import {  useState } from "react"
 import type { Ayah } from "../utils/types"
 
-const AyahComponent = ({ayah,lastOne}:{ayah:Ayah,lastOne:boolean}) => {
+const AyahComponent = ({ayah,lastOne,scrollToBottom}:{ayah:Ayah,lastOne:boolean,scrollToBottom:()=>void}) => {
   const [, setShowAllAyah] = useState(false);
   const[NumberOfWords,setNumberOfWords]=useState(1)
   const stopGetNextWord=ayah.text.split(' ').length>NumberOfWords
@@ -14,6 +14,7 @@ const AyahComponent = ({ayah,lastOne}:{ayah:Ayah,lastOne:boolean}) => {
       if(stopGetNextWord ){
         setNumberOfWords(prev=>prev+1)
     }
+    scrollToBottom()
   }
   const handleGetPrevWord=()=>{    
       if(!stopGetPrevWord ){
@@ -26,6 +27,7 @@ const AyahComponent = ({ayah,lastOne}:{ayah:Ayah,lastOne:boolean}) => {
       setNumberOfWords(newState ? ayah.text.split(" ").length : 1);
       return newState;
     });
+    scrollToBottom()
   };
   return (
     <>

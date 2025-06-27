@@ -1,3 +1,4 @@
+export type SurahOrJuz='juz'|'surah'
 export interface Welcome {
   code:   number;
   status: string;
@@ -31,12 +32,12 @@ export interface SajdaClass {
 }
 
 export interface Surah {
-  number:                 number;
-  name:                   string;
-  englishName:            string;
+  number: number;
+  name: string;
+  englishName: string;
   englishNameTranslation: string;
- 
-  numberOfAyahs:          number;
+  revelationType: "Meccan" | "Medinan";
+  ayahs: Ayah[];
 }
 
 
