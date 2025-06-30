@@ -7,6 +7,7 @@ import NavBar from "./NavBar";
 import AyahComponent from "./Ayah";
 import Instructions from "./Instructions";
 import SurahsDropdown from "./SurahsDropdown";
+import AyahStartDropdown from "./AyahStartDropdown";
 
 const Quran = () => {
   const[juzOrSurah,setJuzOrSurah]=useState<SurahOrJuz>('juz')
@@ -16,8 +17,10 @@ const Quran = () => {
   const [ayahsPage, setAyahsPage] = useState<Ayah[]>([]);
   const [optionsNumbersArray, setOptionsNumbersArray] = useState<number[]>([]);
   const numbersOfJuz = useMemo(() => Array.from({ length: 30 }, (_, i) => i + 1), []);
-// *****************************************
-const[surahChoise,setSurahChoise]=useState('سُورَةُ ٱلْفَاتِحَةِ')
+  // *****************************************
+  const[surahChoise,setSurahChoise]=useState('سُورَةُ ٱلْفَاتِحَةِ')
+  const [numberOfAyahs,setNumberOfAyahs]=useState(7)
+  const[choosenNumberAyah,setChoosenNumberAyah]=useState(1)
 
   const handleSelectedPage = (x: number) => {
     setCurrentIndex(0);
@@ -39,7 +42,10 @@ const[surahChoise,setSurahChoise]=useState('سُورَةُ ٱلْفَاتِحَ�
       setCurrentIndex(0);
       handleChooseSurah()
     }
-  }, [juz,surahChoise,juzOrSurah]);
+  }, [juz,surahChoise,juzOrSurah,choosenNumberAyah]);
+  useEffect(()=>{
+    setChoosenNumberAyah(1)
+  },[surahChoise])
   const bottomRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -57,9 +63,9 @@ const[surahChoise,setSurahChoise]=useState('سُورَةُ ٱلْفَاتِحَ�
   const handleChooseSurah=async()=>{
     setJuzOrSurah('surah')
     const data=await getQuran()
-    console.log(data.surahs);
     const selectedSurah=data.surahs.filter((surah:Surah)=>surah.name===surahChoise)[0]
-    setAyahsPage(selectedSurah.ayahs)   
+    setAyahsPage(selectedSurah.ayahs.slice(choosenNumberAyah-1))   
+    setNumberOfAyahs(selectedSurah.ayahs.length)
   }
   const handleNext = () => {
     if (ayahsPage && currentIndex < ayahsPage.length - 1) {
@@ -84,7 +90,10 @@ const[surahChoise,setSurahChoise]=useState('سُورَةُ ٱلْفَاتِحَ�
       </div>
       {/* *************************************** */}
       {/* by surah */}
-      {juzOrSurah==="surah"&&<SurahsDropdown setSurahChoise={setSurahChoise} surahChoise={surahChoise}/>}
+      {juzOrSurah==="surah"&&<>
+      <SurahsDropdown setSurahChoise={setSurahChoise} surahChoise={surahChoise}/>
+      <AyahStartDropdown numberOfAyahs={numberOfAyahs} setChoosenNumberAyah={setChoosenNumberAyah} choosenNumberAyah={choosenNumberAyah} />
+      </>}
       {/* by juz */}
      {juzOrSurah==='juz'&&<> <Buttons
         numbers={numbersOfJuz}
