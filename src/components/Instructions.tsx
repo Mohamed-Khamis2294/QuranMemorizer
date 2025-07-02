@@ -8,10 +8,10 @@ import {
 } from "lucide-react";
 
 const Instructions = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
-    <div dir="rtl" className="mx-4 mt-4 pt-16">
+    <div dir="rtl" className="mx-4 mt-4 pt-16" >
       {/* Toggle Button */}
       <button
         onClick={() => setOpen((prev) => !prev)}
@@ -42,8 +42,7 @@ const Instructions = () => {
           <div className="flex items-start gap-2">
             <ArrowRightLeft className="mt-1" />
             <p>
-              <span className="font-semibold">ثانياً:</span> ستظهر أول كلمةمن اول  آية من الصفحة، ثم عند الضغط على{" "}
-              <span className="bg-green-500 text-white px-2 py-0.5 rounded">التالي</span>، تظهر أول كلمة فقط من الآية التالية.
+              <span className="font-semibold">ثانياً:</span> ستظهر أول كلمةمن اخر  آية معروضة في الصفحة.
             </p>
           </div>
 
@@ -58,6 +57,7 @@ const Instructions = () => {
             <Eye className="mt-1" />
             <p>
               او الضغط علي الازرار التي تظهر تحت اخر اية تم عرضها لعرض كلمة كلمة.
+              وبعد الانتهاء يمكنك الانتقال الي الاية التالية .
             </p>
           </div>
         </div>
