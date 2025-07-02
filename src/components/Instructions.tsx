@@ -5,21 +5,21 @@ import {
   Eye,
   ChevronDown,
   ChevronUp,
+  Smile,
 } from "lucide-react";
 
 const Instructions = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
-    <div dir="rtl" className="mx-4 mt-4 pt-16" >
+    <div dir="rtl" className="mx-4 mt-4 pt-16" onClick={() => setOpen((prev) => !prev)} >
       {/* Toggle Button */}
-      <button
-        onClick={() => setOpen((prev) => !prev)}
+      <div
         className="flex items-center justify-between w-full bg-yellow-500 dark:bg-yellow-600 text-black px-4 py-3 rounded-t-2xl font-bold shadow"
       >
-        <span>تعليمات الاستخدام</span>
+        <span>تعليمات الاستخدام{!open&&(<span className="p-2 rounded bg-green-300 ">اضغط هنا لتظهر التعليمات</span>)}</span>
         {open ? <ChevronUp /> : <ChevronDown />}
-      </button>
+      </div>
 
       {/* Collapsible content */}
       {open && (
@@ -58,6 +58,12 @@ const Instructions = () => {
             <p>
               او الضغط علي الازرار التي تظهر تحت اخر اية تم عرضها لعرض كلمة كلمة.
               وبعد الانتهاء يمكنك الانتقال الي الاية التالية .
+            </p>
+          </div>
+          <div className="flex items-start gap-2">
+            <Smile className="mt-1" />
+            <p>
+              بعد قراءة التعليمات يمكنك الان اغلاقها بالضغط علي اي جزء بها ويمكنك اظهارها مرة اخري عند الحاجة.
             </p>
           </div>
         </div>
