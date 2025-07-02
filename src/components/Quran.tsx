@@ -10,7 +10,7 @@ import SurahsDropdown from "./SurahsDropdown";
 import AyahStartDropdown from "./AyahStartDropdown";
 
 const Quran = () => {
-  const[juzOrSurah,setJuzOrSurah]=useState<SurahOrJuz>('juz')
+  const[juzOrSurah,setJuzOrSurah]=useState<SurahOrJuz>('surah')
   const [juz, setJuz] = useState(1);
   const [ayahsArray, setAyahsArray] = useState<Ayah[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
