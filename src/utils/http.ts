@@ -40,3 +40,25 @@ export async function getAudioAyah(surahNumber:number,ayahNumber:number){
     throw error;
   }
 }
+export async function getTafsirAyah(surahNumber: number, ayahNumber: number) {
+  try {
+    const url = `http://api.quran-tafseer.com/tafseer/1/${surahNumber}/${ayahNumber}`;
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+
+    const res = await fetch(proxyUrl);
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch Tafsir`);
+    }
+
+    const data = await res.json();
+    const parsed = JSON.parse(data.contents); // نحلل النص الراجع
+
+    return parsed;
+  } catch (error) {
+    console.error("Error fetching tafsir:", error);
+    throw error;
+  }
+}
+
+

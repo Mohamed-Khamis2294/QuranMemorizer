@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { getQuran } from "../utils/http";
+import { getQuran} from "../utils/http";
 import type { Ayah, Surah } from "../utils/types";
 
 import NavBar from "./NavBar";
@@ -8,6 +8,7 @@ import Instructions from "./Instructions";
 import SurahsDropdown from "./SurahsDropdown";
 import AyahStartDropdown from "./AyahStartDropdown";
 import InputAudio from "./InputAudio";
+import TafsirAyah from "./TafsirAyah";
 
 const Quran = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,6 +27,7 @@ const Quran = () => {
   };
   fetchData();
 }, []);
+ 
   useEffect(() => {
       setCurrentIndex(0);
       handleChooseSurah()
@@ -88,7 +90,12 @@ const Quran = () => {
         <div  dir="rtl" className=" flex flex-col p-2 items-center justify-center pb-36  gap-0">
         {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (<div key={ayah.text}>
           <AyahComponent   ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1} scrollToBottom={scrollToBottom}/>
-         {index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1&& <InputAudio ayahAudioNo={choosenNumberAyah+index} surahNumber={surahNumber}/>}
+         {index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1&& <><InputAudio ayahAudioNo={choosenNumberAyah+index} surahNumber={surahNumber}/>
+         <TafsirAyah ayahNumber={choosenNumberAyah + index} surahNumber={surahNumber} />
+         </>
+         }
+         {
+         }
         </div>
           ))}
            <div ref={bottomRef} />
