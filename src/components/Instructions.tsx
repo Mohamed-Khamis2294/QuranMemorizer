@@ -63,7 +63,10 @@ const Instructions = () => {
           <div className="flex items-start gap-2">
             <Eye className="mt-1" />
             <p>
-              <span className="text-green-700 font-semibold">كما يمكنك الاستماع لاخر اية معروضة بصوت الشيخ /مشاري راشد العفاسي</span>
+              <span className="text-green-700 font-semibold">كما يمكنك الاستماع 
+              لاخر اية معروضة بصوت الشيخ /مشاري راشد العفاسي</span>
+              <span> </span>
+              ويمكنك عرض تفسير اخر اية  
             </p>
           </div>
           <div className="flex items-start gap-2">
