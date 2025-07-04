@@ -17,7 +17,7 @@ const Instructions = () => {
       <div
         className="flex items-center justify-between w-full bg-yellow-500 dark:bg-yellow-600 text-black px-4 py-3 rounded-t-2xl font-bold shadow"
       >
-        <span>تعليمات الاستخدام{!open&&(<span className="p-2 rounded bg-green-300 ">اضغط هنا لتظهر التعليمات</span>)}</span>
+        <span>تعليمات الاستخدام{!open&&(<span className="p-2 rounded text-green-700 ">اضغط هنا لتظهر التعليمات</span>)}</span>
         {open ? <ChevronUp /> : <ChevronDown />}
       </div>
 
