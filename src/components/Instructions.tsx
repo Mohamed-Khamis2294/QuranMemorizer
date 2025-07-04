@@ -35,7 +35,7 @@ const Instructions = () => {
           <div className="flex items-start gap-2">
             <ArrowRightLeft className="mt-1" />
             <p>
-              <span className="font-semibold">أولاً:</span> اختر الجزء والصفحة التي تحفظها.<span className="bg-green-500 text-white px-2 py-0.5 rounded">او</span> السورة ورقم الاية التي ترغب من عندها البدء في الحفظ.
+              <span className="font-semibold">أولاً:</span> اختر السورة ورقم الاية التي ترغب من عندها البدء في الحفظ.
             </p>
           </div>
 
@@ -58,6 +58,12 @@ const Instructions = () => {
             <p>
               او الضغط علي الازرار التي تظهر تحت اخر اية تم عرضها لعرض كلمة كلمة.
               وبعد الانتهاء يمكنك الانتقال الي الاية التالية .
+            </p>
+          </div>
+          <div className="flex items-start gap-2">
+            <Eye className="mt-1" />
+            <p>
+              <span className="text-green-700 font-semibold">كما يمكنك الاستماع لاخر اية معروضة بصوت الشيخ /مشاري راشد العفاسي</span>
             </p>
           </div>
           <div className="flex items-start gap-2">

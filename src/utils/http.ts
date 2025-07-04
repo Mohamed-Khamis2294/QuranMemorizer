@@ -26,3 +26,17 @@ export async function getQuran () {
     throw error;
   }
 }
+
+export async function getAudioAyah(surahNumber:number,ayahNumber:number){
+  try {
+    const res = await fetch(`https://api.alquran.cloud/v1/ayah/${surahNumber}:${ayahNumber}/ar.alafasy`);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch Quran page`);
+    }
+    const data = await res.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}

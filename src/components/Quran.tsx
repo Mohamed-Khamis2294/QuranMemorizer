@@ -1,48 +1,35 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { getJuz, getQuran } from "../utils/http";
-import type { Ayah, Surah, SurahOrJuz } from "../utils/types";
-import Buttons from "./Buttons";
-import PageDropdown from "./PageDropdown";
+import { useEffect, useRef, useState } from "react";
+import { getQuran } from "../utils/http";
+import type { Ayah, Surah } from "../utils/types";
+
 import NavBar from "./NavBar";
 import AyahComponent from "./Ayah";
 import Instructions from "./Instructions";
 import SurahsDropdown from "./SurahsDropdown";
 import AyahStartDropdown from "./AyahStartDropdown";
+import InputAudio from "./InputAudio";
 
 const Quran = () => {
-  const[juzOrSurah,setJuzOrSurah]=useState<SurahOrJuz>('surah')
-  const [juz, setJuz] = useState(1);
-  const [ayahsArray, setAyahsArray] = useState<Ayah[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [ayahsPage, setAyahsPage] = useState<Ayah[]>([]);
-  const [optionsNumbersArray, setOptionsNumbersArray] = useState<number[]>([]);
-  const numbersOfJuz = useMemo(() => Array.from({ length: 30 }, (_, i) => i + 1), []);
   // *****************************************
+  const [quranData, setQuranData] = useState<any>(null);
   const[surahChoise,setSurahChoise]=useState('سُورَةُ ٱلْفَاتِحَةِ')
+  const[surahNumber,setSurahNumber]=useState(1)
   const [numberOfAyahs,setNumberOfAyahs]=useState(7)
   const[choosenNumberAyah,setChoosenNumberAyah]=useState(1)
 
-  const handleSelectedPage = (x: number) => {
-    setCurrentIndex(0);
-    setAyahsPage(ayahsArray.filter((a) => a.page === x));
-  };
-  
   useEffect(() => {
-    if(juzOrSurah==='juz'){
-      async function handleGetjuz() {
-        const data = await getJuz(juz);
-        setAyahsArray(data.ayahs);
-        const uniquePages = Array.from(new Set(data.ayahs.map((a) => a.page)));
-        setOptionsNumbersArray(uniquePages);
-        setCurrentIndex(0);
-        setAyahsPage(data.ayahs.filter((a) => a.page === uniquePages[0]));
-      }
-      handleGetjuz();
-    }else{
+  const fetchData = async () => {
+    const data = await getQuran();
+    setQuranData(data);
+  };
+  fetchData();
+}, []);
+  useEffect(() => {
       setCurrentIndex(0);
       handleChooseSurah()
-    }
-  }, [juz,surahChoise,juzOrSurah,choosenNumberAyah]);
+  }, [surahChoise,choosenNumberAyah,quranData]);
   useEffect(()=>{
     setChoosenNumberAyah(1)
   },[surahChoise])
@@ -57,16 +44,23 @@ const Quran = () => {
   //     behavior: 'smooth' 
   //   });
   // };
-  const handleChooseJuz=()=>{
-    setJuzOrSurah('juz')
-  }
-  const handleChooseSurah=async()=>{
-    setJuzOrSurah('surah')
-    const data=await getQuran()
-    const selectedSurah=data.surahs.filter((surah:Surah)=>surah.name===surahChoise)[0]
-    setAyahsPage(selectedSurah.ayahs.slice(choosenNumberAyah-1))   
-    setNumberOfAyahs(selectedSurah.ayahs.length)
-  }
+  
+  const handleChooseSurah = () => {
+    if (!quranData) return;
+    const selectedSurah = quranData.surahs.find(
+      (surah: Surah) => surah.name === surahChoise
+    );
+  
+    const selectedSurahNumber = quranData.surahs.findIndex(
+      (surah: Surah) => surah.name === surahChoise
+    ) + 1;
+  
+    if (!selectedSurah) return;
+  
+    setSurahNumber(selectedSurahNumber);
+    setAyahsPage(selectedSurah.ayahs.slice(choosenNumberAyah - 1));
+    setNumberOfAyahs(selectedSurah.ayahs.length);
+  };
   const handleNext = () => {
     if (ayahsPage && currentIndex < ayahsPage.length - 1) {
       setCurrentIndex(currentIndex + 1)
@@ -83,34 +77,19 @@ const Quran = () => {
     <>
       <NavBar/> 
       <Instructions/>
-      {/* two buttons to toggle bet juz or surah */}
-      <div className="pt-16 flex  justify-center items-center gap-2">
-        <button onClick={handleChooseJuz} disabled={juzOrSurah==='juz'} className={`px-4 py-2 bg-blue-500  dark:bg-blue-700 text-white rounded ${juzOrSurah==='juz'?'opacity-50 cursor-auto':'cursor-pointer'} disabled:cursor-auto`}>اختر البحث بالجزءورقم الصفحة</button>
-        <button onClick={handleChooseSurah} disabled={juzOrSurah==='surah'} className={`px-4 py-2 bg-blue-500  dark:bg-blue-700 text-white rounded ${juzOrSurah==='surah'?'opacity-50 cursor-auto':'cursor-pointer'} disabled:cursor-auto`}>اختر البحث بالسورة ورقم الاية</button>
-      </div>
-      {/* *************************************** */}
+    
       {/* by surah */}
-      {juzOrSurah==="surah"&&<>
+  
       <SurahsDropdown setSurahChoise={setSurahChoise} surahChoise={surahChoise}/>
       <AyahStartDropdown numberOfAyahs={numberOfAyahs} setChoosenNumberAyah={setChoosenNumberAyah} choosenNumberAyah={choosenNumberAyah} />
-      </>}
-      {/* by juz */}
-     {juzOrSurah==='juz'&&<> <Buttons
-        numbers={numbersOfJuz}
-        onselect={setJuz}
-        activeJuz={juz}
-      />
-      <PageDropdown
-        onselect={handleSelectedPage}
-        optionsNumbersArray={optionsNumbersArray}
-      />
-      </>
-      }
+     
       {/* ****************************** */}
-      <div   key={juzOrSurah} className="flex flex-col  items-center  justify-center">
+      <div   key={surahNumber|choosenNumberAyah} className="flex flex-col  items-center  justify-center">
         <div  dir="rtl" className=" flex flex-col p-2 items-center justify-center pb-36  gap-0">
-        {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (
-          <AyahComponent  key={ayah.text} ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1} scrollToBottom={scrollToBottom}/>
+        {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (<div key={ayah.text}>
+          <AyahComponent   ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1} scrollToBottom={scrollToBottom}/>
+         {index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1&& <InputAudio ayahAudioNo={choosenNumberAyah+index} surahNumber={surahNumber}/>}
+        </div>
           ))}
            <div ref={bottomRef} />
           </div>
