@@ -34,7 +34,7 @@ const AyahComponent = ({ayah,lastOne,scrollToBottom}:{ayah:Ayah,lastOne:boolean,
     <p  onClick={handleDisplayAllAyah} className={`font-medium text-center mb-1 text-lg dark:text-amber-300 ${lastOne&&'text-green-700 dark:text-green-300'}`}>
     {lastOne? lastAyahShape:ayah.text}۞
   </p>
- {lastOne&&<div className="flex justify-center mb-2 gap-2">
+ {lastOne&&<div className="flex justify-center my-4 gap-2">
   <button disabled={!stopGetNextWord} className="px-4 py-2  bg-green-300 cursor-pointer dark:bg-green-700 dark:text-white rounded disabled:opacity-50 disabled:cursor-auto" onClick={handleGetNextWord}>اظهر الكلمة التالية</button>
   <button disabled={stopGetPrevWord} className="px-4 py-2  bg-green-300 cursor-pointer dark:bg-green-700 dark:text-white rounded disabled:opacity-50 disabled:cursor-auto" onClick={handleGetPrevWord}>اظهر الكلمة السابقة</button>
   </div>}

@@ -101,7 +101,7 @@ const Instructions = () => {
               <Eye className="mt-1" />
               <p>
                 <span className="text-green-700 font-semibold">
-                  كما يمكنك الاستماع لآخر آية معروضة بصوت الشيخ / مشاري راشد العفاسي
+               كما يمكنك الاستماع لآخر آية معروضة واختيار القارئ 
                 </span>
                 <span> </span>
                 ويمكنك عرض تفسير آخر آية.
