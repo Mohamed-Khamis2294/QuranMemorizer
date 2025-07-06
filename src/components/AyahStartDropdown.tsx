@@ -18,9 +18,6 @@ const AyahStartDropdown = ({
  
   return (
     <div className="flex items-center" >
-      <label htmlFor="Ayah-select" className=" font-medium dark:text-white">
-        اختر الاية
-      </label>
       <select
         id="Ayah-select"
         value={selected}
@@ -33,6 +30,9 @@ const AyahStartDropdown = ({
           </option>
         ))}
       </select>
+      <label htmlFor="Ayah-select" className=" font-medium dark:text-white">
+       :اختر الاية
+      </label>
     </div>
   );
 };
