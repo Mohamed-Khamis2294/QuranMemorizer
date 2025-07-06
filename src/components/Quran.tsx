@@ -86,7 +86,7 @@ const Quran = () => {
       {/* by surah */}
   
       <SurahsDropdown setSurahChoise={setSurahChoise} surahChoise={surahChoise}/>
-     <div className="flex justify-between">
+     <div className="flex justify-between items-center">
      <AyahStartDropdown numberOfAyahs={numberOfAyahs} setChoosenNumberAyah={setChoosenNumberAyah} choosenNumberAyah={choosenNumberAyah} />
       <AudioReaderDropdown selectedReader={selectedReader} setSelectedReader={setSelectedReader}/>
      </div>
