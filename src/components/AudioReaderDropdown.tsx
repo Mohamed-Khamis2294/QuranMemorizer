@@ -14,7 +14,7 @@ setSelectedReader:React.Dispatch<React.SetStateAction<number>>
     setSelected(selectedReader)
   },[selectedReader])
   return (
-    <div className="p-4" >
+    <div className=" flex items-center" >
    
     <select
       id="reader-select"
@@ -28,7 +28,7 @@ setSelectedReader:React.Dispatch<React.SetStateAction<number>>
         </option>
       ))}
     </select>
-    <label htmlFor="reader-select" className="mr-2 font-medium dark:text-white">
+    <label htmlFor="reader-select" className=" font-medium dark:text-white">
      : القارئ
     </label>
   </div>

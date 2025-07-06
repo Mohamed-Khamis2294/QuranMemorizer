@@ -17,8 +17,8 @@ const AyahStartDropdown = ({
 
  
   return (
-    <div className="p-4" >
-      <label htmlFor="Ayah-select" className="mr-2 font-medium dark:text-white">
+    <div className="flex items-center" >
+      <label htmlFor="Ayah-select" className=" font-medium dark:text-white">
         اختر الاية
       </label>
       <select
