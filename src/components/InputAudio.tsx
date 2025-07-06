@@ -1,20 +1,23 @@
 import React, { useRef, useState, useEffect } from "react";
-import { getAudioAyah } from "../utils/http";
+// import { getAudioAyah } from "../utils/http";
 import { Play,  Pause } from "lucide-react";
 
-const InputAudio = ({ surahNumber, ayahAudioNo }: { surahNumber: number; ayahAudioNo: number }) => {
+const InputAudio = ({ surahNumber, ayahAudioNo,selectedReader }: { surahNumber: number; ayahAudioNo: number,selectedReader:number }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [currentUrl, setCurrentUrl] = useState<string>('https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3');
+  const [currentUrl, setCurrentUrl] = useState<string>('https://the-quran-project.github.io/Quran-Audio/Data/1/1_1.mp3');
   const [progress, setProgress] = useState<number>(0);
 
-  useEffect(() => {
-    async function handleGetAudioAyah() {
-      const data = await getAudioAyah(surahNumber, ayahAudioNo);
-      setCurrentUrl(data.audio);
-    }
-    handleGetAudioAyah();
-  }, [surahNumber, ayahAudioNo]);
+  // useEffect(() => {
+  //   async function handleGetAudioAyah() {
+  //     const data = await getAudioAyah(surahNumber, ayahAudioNo);
+  //     setCurrentUrl(data.audio);
+  //   }
+  //   handleGetAudioAyah();
+  // }, [surahNumber, ayahAudioNo]);
+  useEffect(()=>{
+    setCurrentUrl(`https://the-quran-project.github.io/Quran-Audio/Data/${selectedReader}/${surahNumber}_${ayahAudioNo}.mp3`)
+  },[selectedReader])
 
   const togglePlay = () => {
     const audio = audioRef.current;

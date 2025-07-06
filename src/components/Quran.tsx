@@ -9,6 +9,7 @@ import SurahsDropdown from "./SurahsDropdown";
 import AyahStartDropdown from "./AyahStartDropdown";
 import InputAudio from "./InputAudio";
 import TafsirAyah from "./TafsirAyah";
+import AudioReaderDropdown from "./AudioReaderDropdown";
 
 const Quran = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,6 +20,8 @@ const Quran = () => {
   const[surahNumber,setSurahNumber]=useState(1)
   const [numberOfAyahs,setNumberOfAyahs]=useState(7)
   const[choosenNumberAyah,setChoosenNumberAyah]=useState(1)
+  const [selectedReader, setSelectedReader] = useState<number>(1);
+
 
   useEffect(() => {
   const fetchData = async () => {
@@ -83,14 +86,17 @@ const Quran = () => {
       {/* by surah */}
   
       <SurahsDropdown setSurahChoise={setSurahChoise} surahChoise={surahChoise}/>
-      <AyahStartDropdown numberOfAyahs={numberOfAyahs} setChoosenNumberAyah={setChoosenNumberAyah} choosenNumberAyah={choosenNumberAyah} />
+     <div className="flex justify-between">
+     <AyahStartDropdown numberOfAyahs={numberOfAyahs} setChoosenNumberAyah={setChoosenNumberAyah} choosenNumberAyah={choosenNumberAyah} />
+      <AudioReaderDropdown selectedReader={selectedReader} setSelectedReader={setSelectedReader}/>
+     </div>
      
       {/* ****************************** */}
       <div   key={surahNumber|choosenNumberAyah} className="flex flex-col  items-center  justify-center">
         <div  dir="rtl" className=" flex flex-col p-2 items-center justify-center pb-36  gap-0">
         {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (<div key={ayah.text}>
           <AyahComponent   ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1} scrollToBottom={scrollToBottom}/>
-         {index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1&& <><InputAudio ayahAudioNo={choosenNumberAyah+index} surahNumber={surahNumber}/>
+         {index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1&& <><InputAudio ayahAudioNo={choosenNumberAyah+index} surahNumber={surahNumber} selectedReader={selectedReader}/>
          <TafsirAyah ayahNumber={choosenNumberAyah + index} surahNumber={surahNumber} />
          </>
          }
