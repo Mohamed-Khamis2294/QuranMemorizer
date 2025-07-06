@@ -29,7 +29,7 @@ setSelectedReader:React.Dispatch<React.SetStateAction<number>>
       ))}
     </select>
     <label htmlFor="reader-select" className="mr-2 font-medium dark:text-white">
-     : اختر القارئ
+     : القارئ
     </label>
   </div>
   )
