@@ -1,4 +1,5 @@
 import ThemeToggle from "./ThemeToggle"
+import { memo } from 'react';
 
 const NavBar = () => {
   return (
@@ -9,4 +10,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default memo(NavBar)

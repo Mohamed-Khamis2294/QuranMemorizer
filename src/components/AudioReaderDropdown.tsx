@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-export const QuranReaders = [
-  { name: "مشاري راشد العفاسي" },
-  { name: "أبو بكر الشاطري" },
-  { name: "ناصر القطامي" },
-  { name: "ياسر الدوسري" },
-  { name: "هاني الرفاعي" },
-];
+import { memo, useEffect, useState } from "react";
+import { QuranReaders } from "../utils/data";
+// export const QuranReaders = [
+//   { name: "مشاري راشد العفاسي" },
+//   { name: "أبو بكر الشاطري" },
+//   { name: "ناصر القطامي" },
+//   { name: "ياسر الدوسري" },
+//   { name: "هاني الرفاعي" },
+// ];
 const AudioReaderDropdown = ({selectedReader,setSelectedReader}:{selectedReader:number,
 setSelectedReader:React.Dispatch<React.SetStateAction<number>>
 }) => {
@@ -35,4 +36,4 @@ setSelectedReader:React.Dispatch<React.SetStateAction<number>>
   )
 }
 
-export default AudioReaderDropdown
+export default memo(AudioReaderDropdown)

@@ -1,3 +1,4 @@
+import  { memo } from 'react';
 import { surahNames } from './../utils/data';
 
 const SurahsDropdown = ({
@@ -40,4 +41,4 @@ const SurahsDropdown = ({
   );
 };
 
-export default SurahsDropdown;
+export default memo(SurahsDropdown);

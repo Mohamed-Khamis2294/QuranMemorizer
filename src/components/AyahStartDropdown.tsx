@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 const AyahStartDropdown = ({
   numberOfAyahs,
@@ -37,4 +37,4 @@ const AyahStartDropdown = ({
   );
 };
 
-export default AyahStartDropdown;
+export default memo(AyahStartDropdown);

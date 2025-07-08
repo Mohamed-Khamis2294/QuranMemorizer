@@ -117,3 +117,37 @@ export  const surahNames:SurahName[] = [
   { name: "سُورَةُ الفَلَقِ" },
   { name: "سُورَةُ النَّاسِ" }
 ];
+
+export interface QuranReader {
+  name: string;
+  folder: string;
+}
+
+export const QuranReaders: QuranReader[] = [
+  { name: "الحصري (مرتّل)", folder: "Husary_128kbps" },
+  { name: "الحصري (معلّم)", folder: "Husary_Muallim_128kbps" },
+  { name: "الحصري (مجوّد)", folder: "Husary_128kbps_Mujawwad" },
+  { name: "المنشاوي (مرتّل)", folder: "Minshawy_Murattal_128kbps" },
+  { name: "المنشاوي (مجوّد)", folder: "Minshawy_Mujawwad_64kbps" },
+  { name: "المنشاوي (معلم)", folder: "Minshawy_Teacher_128kbps" },
+  { name: "مشاري راشد العفاسي", folder: "Alafasy_128kbps" },
+  { name: "مشاري راشد العفاسي (64kbps)", folder: "Alafasy_64kbps" },
+  { name: "عبد الباسط عبد الصمد (مرتّل)", folder: "Abdul_Basit_Murattal_64kbps" },
+  { name: "عبد الباسط عبد الصمد (مرتّل 192kbps)", folder:"Abdul_Basit_Murattal_192kbps" },
+  { name: "عبد الباسط عبد الصمد (مجوّد)", folder: "Abdul_Basit_Mujawwad_128kbps" },
+  { name: "عبد الله بصفر", folder: "Abdullah_Basfar_64kbps" },
+  { name: "عبد الله مطرود", folder: "Abdullah_Matroud_128kbps" },
+  { name: "أبو بكر الشاطري", folder: "Abu_Bakr_Ash-Shaatree_128kbps" },
+  { name: "ناصر القطامي", folder: "Nasser_Alqatami_128kbps" },
+  { name: "محمد أيوب", folder: "Muhammad_Ayyoub_128kbps" },
+  { name: "محمد جبريل", folder: "Muhammad_Jibreel_128kbps" },
+  { name: "ماهر المعيقلي", folder: "MaherAlMuaiqly128kbps" },
+  { name: "سعود الشريم", folder: "Saood_ash-Shuraym_128kbps" },
+  { name: "عبد الرحمن السديس", folder: "Abdurrahmaan_As-Sudais_192kbps" },
+  { name: "ياسر الدوسري", folder: "Yasser_Ad-Dussary_128kbps" },
+  { name: "أحمد العجمي", folder: "ahmed_ibn_ali_al_ajamy_128kbps" },
+  { name: "خالد القحطاني", folder: "Khaalid_Abdullaah_al-Qahtaanee_192kbps" },
+  { name: "هاني الرفاعي", folder: "Hani_Rifai_192kbps" },
+  { name: "صلاح البدير", folder: "Salaah_AbdulRahman_Bukhatir_128kbps" },
+];
+

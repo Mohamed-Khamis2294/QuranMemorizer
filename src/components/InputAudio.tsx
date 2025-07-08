@@ -1,12 +1,19 @@
 import React, { useRef, useState, useEffect } from "react";
 // import { getAudioAyah } from "../utils/http";
 import { Play,  Pause } from "lucide-react";
+import { QuranReaders } from "../utils/data";
 
 const InputAudio = ({ surahNumber, ayahAudioNo,selectedReader }: { surahNumber: number; ayahAudioNo: number,selectedReader:number }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [currentUrl, setCurrentUrl] = useState<string>('https://the-quran-project.github.io/Quran-Audio/Data/1/1_1.mp3');
+  const [currentUrl, setCurrentUrl] = useState<string>('https://everyayah.com/data/Alafasy_128kbps/001001.mp3');
   const [progress, setProgress] = useState<number>(0);
+
+  function getAudioUrl(surah: number, ayah: number, readerFolder: string|undefined) {
+    const s = surah.toString().padStart(3, "0");
+    const a = ayah.toString().padStart(3, "0");
+    return `https://www.everyayah.com/data/${readerFolder}/${s}${a}.mp3`;
+  }
 
   // useEffect(() => {
   //   async function handleGetAudioAyah() {
@@ -16,8 +23,15 @@ const InputAudio = ({ surahNumber, ayahAudioNo,selectedReader }: { surahNumber: 
   //   handleGetAudioAyah();
   // }, [surahNumber, ayahAudioNo]);
   useEffect(()=>{
-    setCurrentUrl(`https://the-quran-project.github.io/Quran-Audio/Data/${selectedReader}/${surahNumber}_${ayahAudioNo}.mp3`)
-  },[selectedReader])
+    // setCurrentUrl(`https://the-quran-project.github.io/Quran-Audio/Data/${selectedReader}/${surahNumber}_${ayahAudioNo}.mp3`)
+    setCurrentUrl(_=>{
+      const folder=QuranReaders.find((_,index)=>index===selectedReader-1)?.folder
+      const audioUrl=getAudioUrl(surahNumber,ayahAudioNo,folder)
+      return audioUrl
+    })
+    setIsPlaying(false)
+    setProgress(0)
+  },[selectedReader, surahNumber, ayahAudioNo])
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -66,7 +80,7 @@ const InputAudio = ({ surahNumber, ayahAudioNo,selectedReader }: { surahNumber: 
   }, []);
 
   return (
-    <div className="bg-gray-100 dark:bg-[#1a1c1f] border border-gray-300 dark:border-gray-700 p-5 rounded-2xl shadow-sm w-full max-w-md mx-auto transition-colors">
+    <div  className="bg-gray-100 dark:bg-[#1a1c1f] border border-gray-300 dark:border-gray-700 p-5 rounded-2xl shadow-sm w-full max-w-md mx-auto transition-colors">
       <p className="text-center text-lg font-semibold text-gray-800 dark:text-gray-100 mb-5">
         مُشغل صوتي للقرآن
       </p>

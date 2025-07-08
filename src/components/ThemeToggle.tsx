@@ -1,5 +1,5 @@
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(() => localStorage.getItem("theme") === "dark");
@@ -26,4 +26,4 @@ const ThemeToggle = () => {
   );
 };
 
-export default ThemeToggle;
+export default memo(ThemeToggle);
