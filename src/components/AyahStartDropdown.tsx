@@ -31,7 +31,7 @@ const AyahStartDropdown = ({
         ))}
       </select>
       <label htmlFor="Ayah-select" className=" font-medium dark:text-white">
-       :اختر الاية
+       :الاية
       </label>
     </div>
   );
