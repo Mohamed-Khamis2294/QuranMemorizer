@@ -133,7 +133,6 @@ export const QuranReaders: QuranReader[] = [
   { name: "مشاري راشد العفاسي", folder: "Alafasy_128kbps" },
   { name: "مشاري راشد العفاسي (64kbps)", folder: "Alafasy_64kbps" },
   { name: "عبد الباسط عبد الصمد (مرتّل)", folder: "Abdul_Basit_Murattal_64kbps" },
-  { name: "عبد الباسط عبد الصمد (مرتّل 192kbps)", folder:"Abdul_Basit_Murattal_192kbps" },
   { name: "عبد الباسط عبد الصمد (مجوّد)", folder: "Abdul_Basit_Mujawwad_128kbps" },
   { name: "عبد الله بصفر", folder: "Abdullah_Basfar_64kbps" },
   { name: "عبد الله مطرود", folder: "Abdullah_Matroud_128kbps" },
