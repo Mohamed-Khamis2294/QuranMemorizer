@@ -28,9 +28,9 @@ const SurahsDropdown = ({
                      focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500
                      transition duration-200"
         >
-          <option value="">-- اختر سورة --</option>
+          <option value="" className='text-center'>-- اختر سورة --</option>
           {surahNames.map((surah, idx) => (
-            <option key={idx} value={surah.name}>
+            <option key={idx} className='text-center' value={surah.name}>
               {surah.name}
             </option>
           ))}

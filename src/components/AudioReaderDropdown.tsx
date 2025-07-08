@@ -24,7 +24,7 @@ setSelectedReader:React.Dispatch<React.SetStateAction<number>>
       className="border border-gray-300 dark:border-gray-600 rounded px-3 py-1 bg-white dark:bg-gray-800 dark:text-white"
     >
       {QuranReaders.map((reader,index) => (
-        <option key={reader.name} value={index+1}>
+        <option key={reader.name} className="text-right" value={index+1}>
           {reader.name}
         </option>
       ))}
