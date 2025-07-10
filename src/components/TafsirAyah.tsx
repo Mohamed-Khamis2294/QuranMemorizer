@@ -36,7 +36,7 @@ const TafsirAyah = ({ surahNumber, ayahNumber }: TafsirAyahProps) => {
   }, [surahNumber, ayahNumber, isVisible]);
 
   return (
-    <div className="mt-3 text-right">
+    <div className="mt-3 text-center">
       <button
         onClick={toggleVisibility}
         className="text-blue-600 dark:text-blue-400 text-sm mb-2 hover:underline"
@@ -52,8 +52,8 @@ const TafsirAyah = ({ surahNumber, ayahNumber }: TafsirAyahProps) => {
             <p className="text-red-500">فشل تحميل التفسير.</p>
           ) : (
             <>
-              <p className="font-semibold text-blue-600 dark:text-blue-400 mb-2">التفسير:</p>
-              <p>{tafsir}</p>
+              <p className="font-semibold text-blue-600 dark:text-blue-400 mb-2 text-right">التفسير:</p>
+              <p className="text-right">{tafsir}</p>
             </>
           )}
         </div>

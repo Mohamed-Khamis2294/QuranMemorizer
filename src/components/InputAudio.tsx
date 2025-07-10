@@ -80,7 +80,7 @@ const InputAudio = ({ surahNumber, ayahAudioNo,selectedReader }: { surahNumber: 
   }, []);
 
   return (
-    <div  className="bg-gray-100 dark:bg-[#1a1c1f] border border-gray-300 dark:border-gray-700 p-5 rounded-2xl shadow-sm w-full max-w-md mx-auto transition-colors">
+    <div  className="bg-gray-100 dark:bg-[#1a1c1f] border border-gray-300 dark:border-gray-700 p-5 rounded-2xl shadow-sm w-[350px] max-w-md mx-auto transition-colors">
       <p className="text-center text-lg font-semibold text-gray-800 dark:text-gray-100 mb-5">
         مُشغل صوتي للقرآن
       </p>
