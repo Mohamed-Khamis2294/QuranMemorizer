@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { getQuran} from "../utils/http";
 import type { Ayah, Surah } from "../utils/types";
 
@@ -7,9 +7,13 @@ import AyahComponent from "./Ayah";
 import Instructions from "./Instructions";
 import SurahsDropdown from "./SurahsDropdown";
 import AyahStartDropdown from "./AyahStartDropdown";
-import InputAudio from "./InputAudio";
-import TafsirAyah from "./TafsirAyah";
+// import InputAudio from "./InputAudio";
+// import TafsirAyah from "./TafsirAyah";
+const InputAudio =lazy(() => import('./InputAudio'));
+const TafsirAyah =lazy(() => import('./TafsirAyah'));
+
 import AudioReaderDropdown from "./AudioReaderDropdown";
+import { BeatLoader } from "react-spinners";
 
 const Quran = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -93,6 +97,7 @@ const Quran = () => {
      
       {/* ****************************** */}
       <div   key={surahNumber|choosenNumberAyah} className="flex flex-col  items-center  justify-center">
+        <Suspense fallback={<div className="h-80 flex justify-center items-center"><BeatLoader color="#f59e0b"/></div>}>
         <div  dir="rtl" className=" flex flex-col p-2 items-center justify-center pb-36  gap-0">
         {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (<div key={ayah.text}>
           <AyahComponent   ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1} scrollToBottom={scrollToBottom}/>
@@ -106,6 +111,8 @@ const Quran = () => {
           ))}
            <div ref={bottomRef} />
           </div>
+        </Suspense>
+
 
         <div className="flex gap-4 mt-4 mb-4 fixed bottom-0 ">
           <button
