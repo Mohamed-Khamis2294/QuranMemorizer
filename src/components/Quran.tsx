@@ -102,7 +102,7 @@ const Quran = () => {
         {ayahsPage.slice(0, currentIndex + 1).map((ayah, index) => (<div key={ayah.text}>
           <AyahComponent   ayah={ayah} lastOne={index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1} scrollToBottom={scrollToBottom}/>
          {index===currentIndex&&ayahsPage.slice(0, currentIndex + 1).length>=1&& <><InputAudio ayahAudioNo={choosenNumberAyah+index} surahNumber={surahNumber} selectedReader={selectedReader}/>
-         <TafsirAyah ayahNumber={choosenNumberAyah + index} surahNumber={surahNumber} scrollToBottom={scrollToBottom}/>
+         <TafsirAyah ayahNumber={choosenNumberAyah + index} surahNumber={surahNumber} />
          </>
          }
          {

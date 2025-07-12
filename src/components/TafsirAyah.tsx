@@ -4,10 +4,9 @@ import { getTafsirAyah } from "../utils/http";
 interface TafsirAyahProps {
   surahNumber: number;
   ayahNumber: number;
-  scrollToBottom:()=>void
 }
 
-const TafsirAyah = ({ surahNumber, ayahNumber,scrollToBottom }: TafsirAyahProps) => {
+const TafsirAyah = ({ surahNumber, ayahNumber }: TafsirAyahProps) => {
   const [tafsir, setTafsir] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
@@ -30,7 +29,6 @@ const TafsirAyah = ({ surahNumber, ayahNumber,scrollToBottom }: TafsirAyahProps)
         setError(true);
       } finally {
         setLoading(false);
-        scrollToBottom()
       }
     };
 
